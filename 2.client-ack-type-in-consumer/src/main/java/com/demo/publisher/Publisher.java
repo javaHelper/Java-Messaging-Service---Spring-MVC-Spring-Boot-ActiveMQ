@@ -10,10 +10,10 @@ public class Publisher {
         ConnectionFactory factory = new ActiveMQConnectionFactory("admin","admin","tcp://localhost:61616");
 
         final Connection connection = factory.createConnection();
-        Session session = connection.createSession(false, Session.AUTO_ACKNOWLEDGE);
+        Session session = connection.createSession(false, Session.CLIENT_ACKNOWLEDGE);
         Destination destination = session.createQueue("demo");
 
-        TextMessage textMessage = session.createTextMessage("First Message!");
+        TextMessage textMessage = session.createTextMessage("3rd Message!");
 
         MessageProducer producer = session.createProducer(destination);
         producer.send(textMessage);
